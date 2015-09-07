@@ -108,7 +108,7 @@ func HTML(s string) string {
 		output = s
 	} else {
 
-		rp, _ := regexp.Compile("(<style\\s[\\S]+>(.)+<\\/style>)")
+		rp, _ := regexp.Compile("(<style\\s[\\S]+>.+<\\/style>)")
 		o := rp.FindStringSubmatch(s)
 		for _, v := range o {
 			s = strings.Replace(s, v, "", -1)
