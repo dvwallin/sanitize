@@ -109,7 +109,10 @@ func HTML(s string) string {
 	} else {
 
 		rp, _ := regexp.Compile("(<style\\s[\\S]+>(.)+<\\/style>)")
-		s = rp.ReplaceAllString(s, "")
+		o := rp.FindStringSubmatch(s)
+		for _, v := range o {
+			s = strings.Replace(s, v, "", -1)
+		}
 
 		// First remove line breaks etc as these have no meaning outside html tags (except pre)
 		// this means pre sections will lose formatting... but will result in less uninentional paras.
