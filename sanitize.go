@@ -108,6 +108,9 @@ func HTML(s string) string {
 		output = s
 	} else {
 
+		rp, _ := regexp.Compile("(<style\\s[\\S]+>(.)+<\\/style>)")
+		s = rp.ReplaceAllString(s, "")
+
 		// First remove line breaks etc as these have no meaning outside html tags (except pre)
 		// this means pre sections will lose formatting... but will result in less uninentional paras.
 		s = strings.Replace(s, "\n", "", -1)

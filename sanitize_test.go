@@ -110,7 +110,7 @@ var htmlTests = []Test{
 	{`<a href="http://www.example.com"?>This is a 'test' of <b>bold</b> &amp; <i>italic</i></a> <br/> invalid markup.<//data>><alert><script CDATA[:Asdfjk2354115nkjafdgs]>. <div src=">">><><img src="">`, "This is a 'test' of bold & italic \n invalid markup.. \""},
 	{`<![CDATA[<sender>John Smith</sender>]]>`, `John Smith]]`},
 	{`<!-- <script src='blah.js' data-rel='fsd'> --> This is text`, ` -- This is text`},
-	{`<style>body{background-image:url(http://www.google.com/intl/en/images/logo.gif);}</style>`, `body{background-image:url(http://www.google.com/intl/en/images/logo.gif);}`},
+	{`<style type='text/css'>body{background-image:url(http://www.google.com/intl/en/images/logo.gif);}</style>`, ``},
 	{`&lt;iframe src="" attr=""&gt;>>>>>`, `&lt;iframe src="" attr=""&gt;`},
 	{`<IMG """><SCRIPT>alert("XSS")</SCRIPT>">`, `alert("XSS")"`},
 	{`<IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>`, ``},
