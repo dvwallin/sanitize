@@ -3,6 +3,7 @@ package sanitize
 
 import (
 	"bytes"
+	"fmt"
 	"html"
 	"html/template"
 	"io"
@@ -110,8 +111,10 @@ func HTML(s string) string {
 
 		rp, _ := regexp.Compile("(<style\\s[\\S]+>.+<\\/style>)")
 		o := rp.FindStringSubmatch(s)
+		fmt.Printf("Got %+v", o)
 		for _, v := range o {
 			s = strings.Replace(s, v, "", -1)
+			fmt.Printf("Sanitized %s", v)
 		}
 
 		// First remove line breaks etc as these have no meaning outside html tags (except pre)
